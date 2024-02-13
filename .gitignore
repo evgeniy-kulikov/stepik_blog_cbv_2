@@ -3,3 +3,4 @@
 /_FAQ/
 /db.sqlite3
 
+/apps/blog/migrations/

@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "apps.blog.apps.BlogConfig",
+
+    "mptt",  # MPTT - это метод хранения и обработки иерархических данных в базе данных.
 ]
 
 MIDDLEWARE = [
@@ -110,9 +112,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ru"
+# LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Moscow"
+# TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -124,7 +128,20 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATIC_ROOT = (BASE_DIR / 'static')
+
+
+# Для режима DEBUG = True
+# указываем путь к хранению медиафайлов
+MEDIA_ROOT = BASE_DIR/'media'
+# указываем префикс пути для медиафайлов
+MEDIA_URL = '/media/'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+
