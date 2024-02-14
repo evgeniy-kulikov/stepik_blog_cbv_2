@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "apps.blog.apps.BlogConfig",
 
     "mptt",  # MPTT - это метод хранения и обработки иерархических данных в базе данных.
+    "django_mptt_admin",  # удобство админки при работе с моделями расширяющими MPTTModel
 ]
 
 MIDDLEWARE = [
