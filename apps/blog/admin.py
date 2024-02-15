@@ -4,8 +4,18 @@ from django_mptt_admin.admin import DjangoMpttAdmin  # улучшить визу
 from .models import Post, Category
 
 # admin.site.register(Post)
+"""
+Параметр prepopulated_fields позволяет с помощью встроенного JS 
+обрабатывать заголовок в реальном времени, 
+конвертирует в т.ч. и кириллицу. 
+"""
+
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
+    """
+    Админ-панель модели записей
+    """
     prepopulated_fields = {'slug': ('title',)}
 
 @admin.register(Category)
