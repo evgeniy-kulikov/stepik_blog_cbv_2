@@ -10,9 +10,9 @@ class PostListView(ListView):
     template_name = 'blog/post_list.html'
     context_object_name = 'posts'
     paginate_by = 2
+    queryset = Post.custom.all()  # Переопределение вызова модели
 
-
-# get_context_data - может использоваться для передачи содержимого или параметров вне модели в шаблон
+    # get_context_data - может использоваться для передачи содержимого или параметров вне модели в шаблон
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Главная страница'
@@ -36,6 +36,8 @@ class PostFromCategory(ListView):
     template_name = 'blog/post_list.html'
     context_object_name = 'posts'
     category = None
+    paginate_by = 1
+    queryset = Post.custom.all()  # Переопределение вызова модели
 
     def get_queryset(self):
 

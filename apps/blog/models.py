@@ -8,6 +8,18 @@ from mptt.models import MPTTModel, TreeForeignKey
 from apps.services.utils import unique_slugify
 
 
+class PostManager(models.Manager):
+    """
+    Кастомный менеджер для модели постов
+    """
+
+    def get_queryset(self):  # переопределяем метод
+        """
+        Список постов (SQL запрос с фильтрацией по статусу опубликованно)
+        """
+        return super().get_queryset().filter(status='published')
+
+
 class Category(MPTTModel):
     """
     Модель категорий с вложенностью
@@ -24,6 +36,7 @@ class Category(MPTTModel):
         related_name='children',
         verbose_name='Родительская категория'
     )
+
 
     class MPTTMeta:
         """
@@ -85,6 +98,9 @@ class Post(models.Model):
     updater = models.ForeignKey(to=User, verbose_name='Обновил', on_delete=models.SET_NULL, null=True,
                                 related_name='updater_posts', blank=True)
     fixed = models.BooleanField(verbose_name='Прикреплено', default=False)
+
+    objects = models.Manager()
+    custom = PostManager()
 
     class Meta:
         db_table = 'blog_post'
