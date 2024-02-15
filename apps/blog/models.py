@@ -45,6 +45,12 @@ class Category(MPTTModel):
         """
         return self.title
 
+    def get_absolute_url(self):
+        """
+        Получаем прямую ссылку на категорию
+        """
+        return reverse('post_by_category', kwargs={'slug': self.slug})
+
 
 class Post(models.Model):
     """

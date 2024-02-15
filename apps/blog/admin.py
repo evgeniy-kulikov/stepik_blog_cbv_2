@@ -17,6 +17,7 @@ class PostAdmin(admin.ModelAdmin):
     Админ-панель модели записей
     """
     prepopulated_fields = {'slug': ('title',)}
+    list_display = ['title', 'status']
 
 @admin.register(Category)
 class CategoryAdmin(DjangoMpttAdmin):
