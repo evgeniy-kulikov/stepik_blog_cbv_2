@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "apps.blog.apps.BlogConfig",
+    "apps.accounts.apps.AccountsConfig",
 
     "mptt",  # MPTT - это метод хранения и обработки иерархических данных в базе данных.
     "django_mptt_admin",  # удобство админки при работе с моделями расширяющими MPTTModel
