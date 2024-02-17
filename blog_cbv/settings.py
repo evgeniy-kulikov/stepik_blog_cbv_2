@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     "mptt",  # MPTT - это метод хранения и обработки иерархических данных в базе данных.
     "django_mptt_admin",  # удобство админки при работе с моделями расширяющими MPTTModel
+    'debug_toolbar',  # приложение Django Debug Toolbar
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'debug_toolbar.middleware.DebugToolbarMiddleware',  # Middleware Django Debug Toolbar
 ]
 
 ROOT_URLCONF = "blog_cbv.urls"
@@ -63,8 +65,7 @@ ROOT_URLCONF = "blog_cbv.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates']
-        ,
+        "DIRS": [BASE_DIR / 'templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -144,5 +145,6 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
-
+INTERNAL_IPS = [
+    '127.0.0.1',  # для Django Debug Toolbar
+]

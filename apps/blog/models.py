@@ -15,9 +15,14 @@ class PostManager(models.Manager):
 
     def get_queryset(self):  # переопределяем метод
         """
-        Список постов (SQL запрос с фильтрацией по статусу опубликованно)
+        Список постов (SQL запрос с фильтрацией по статусу опубликовано)
         """
-        return super().get_queryset().filter(status='published')
+        # Неоптимизированный SQL запрос
+        # return super().get_queryset().filter(status='published')
+
+        # Проблема запроса N + 1.
+        # Используем select_related() метод для выбора как постов, так и разделов с помощью одного запроса.
+        return super().get_queryset().select_related('author', 'category').filter(status='published')
 
 
 class Category(MPTTModel):

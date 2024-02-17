@@ -9,7 +9,7 @@ class PostListView(ListView):
     model = Post
     template_name = 'blog/post_list.html'
     context_object_name = 'posts'
-    paginate_by = 1
+    paginate_by = 2
     queryset = Post.custom.all()  # Переопределение вызова модели
 
     # get_context_data - может использоваться для передачи содержимого или параметров вне модели в шаблон
@@ -37,8 +37,8 @@ class PostListView(ListView):
         Это приведет к появлению страниц 7, 8 и 9 слева и 11, 12 и 13 справа от текущей страницы, 
         а также страниц 1 и 2 в начале и 49 и 50 в конце.
         """
-        page = context['page_obj']
-        context['paginator_range'] = page.paginator.get_elided_page_range(page.number, on_each_side=2, on_ends=2)
+        # page = context['page_obj']
+        # context['paginator_range'] = page.paginator.get_elided_page_range(page.number, on_each_side=2, on_ends=2)
 
         return context
 
