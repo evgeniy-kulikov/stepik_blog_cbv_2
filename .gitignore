@@ -4,5 +4,7 @@
 /db.sqlite3
 
 /apps/blog/migrations/
-/media/
 /accounts/migrations/
+/apps/accounts/migrations/
+
+/media/
