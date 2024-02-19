@@ -7,6 +7,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from .forms import PostCreateForm, PostUpdateForm
 from .models import Post, Category
+from ..services.mixins import AuthorRequiredMixin
 
 
 class PostListView(ListView):
@@ -115,7 +116,9 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class PostUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+# class PostUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+# Убрали LoginRequiredMixin, так как данная логика уже добавлена в кастомный миксин AuthorRequiredMixin
+class PostUpdateView(AuthorRequiredMixin, SuccessMessageMixin, UpdateView):
     """
     Представление: обновления материала (статьи) на сайте
     """
