@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django_mptt_admin.admin import DjangoMpttAdmin  # улучшить визуальный вид раздела категорий в админ панели
 # from mptt.admin import DraggableMPTTAdmin
-from .models import Post, Category
+from .models import Post, Category, Comment
 
 # admin.site.register(Post)
 """
@@ -25,3 +25,11 @@ class CategoryAdmin(DjangoMpttAdmin):
     Админ-панель модели категорий
     """
     prepopulated_fields = {'slug': ('title',)}
+
+
+@admin.register(Comment)
+class CommentAdminPage(DjangoMpttAdmin):
+    """
+    Админ-панель модели комментариев
+    """
+    pass
