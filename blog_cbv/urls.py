@@ -20,10 +20,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('apps.blog.urls')),
+    path('', include('apps.accounts.urls')),
 ]
 
 # Для работы media в режиме DEBUG = True
@@ -32,4 +32,3 @@ if settings.DEBUG:
 
     # для Django Debug Toolbar
     urlpatterns += [path('__debug__/', include('debug_toolbar.urls'))]
-
