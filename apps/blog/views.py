@@ -1,9 +1,9 @@
 
 from django.shortcuts import render
 
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
-from .forms import PostCreateForm
+from .forms import PostCreateForm, PostUpdateForm
 from .models import Post, Category
 
 
@@ -88,7 +88,8 @@ class PostFromCategory(ListView):
 
 class PostCreateView(CreateView):
     """
-    Представление: создание материалов на сайте
+    Представление: создание материалов (статьи) на сайте
+
     """
     model = Post
     template_name = 'blog/post_create.html'
@@ -107,3 +108,25 @@ class PostCreateView(CreateView):
         form.instance.author = self.request.user
         form.save()
         return super().form_valid(form)
+
+
+class PostUpdateView(UpdateView):
+    """
+    Представление: обновления материала (статьи) на сайте
+    """
+    model = Post
+    template_name = 'blog/post_update.html'
+    context_object_name = 'post'
+    form_class = PostUpdateForm
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f'Обновление статьи: {self.object.title}'
+        return context
+
+    def form_valid(self, form):
+        # Временно разрешим всем редактировать свои и чужие статьи
+        # form.instance.updater = self.request.user
+        form.save()
+        return super().form_valid(form)
+
