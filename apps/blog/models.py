@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 # from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel, TreeForeignKey
+from taggit.managers import TaggableManager
 
 from apps.services.utils import unique_slugify
 
@@ -105,6 +106,8 @@ class Post(models.Model):
 
     objects = models.Manager()
     custom = PostManager()
+
+    tags = TaggableManager()  # тегирование
 
     class Meta:
         db_table = 'blog_post'
