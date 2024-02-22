@@ -26,6 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
+RECAPTCHA_PUBLIC_KEY = os.getenv("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = os.getenv("RECAPTCHA_PRIVATE_KEY")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -49,6 +52,7 @@ INSTALLED_APPS = [
     "django_mptt_admin",  # удобство админки при работе с моделями расширяющими MPTTModel
     'debug_toolbar',  # приложение Django Debug Toolbar
     'taggit',  # тегирование
+    'django_recaptcha',
 ]
 
 MIDDLEWARE = [
