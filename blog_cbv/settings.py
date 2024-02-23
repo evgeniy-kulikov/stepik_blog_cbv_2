@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'debug_toolbar',  # приложение Django Debug Toolbar
     'taggit',  # тегирование
     'django_recaptcha',
+    'ckeditor_uploader',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
@@ -146,6 +148,17 @@ MEDIA_ROOT = BASE_DIR/'media'
 # указываем префикс пути для медиафайлов
 MEDIA_URL = '/media/'
 
+#  CKEditor *** start
+# STATIC_ROOT = (BASE_DIR / 'static')
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'awesome_ckeditor': {
+        'toolbar': 'full',
+        'height': 300,
+    },
+}
+#  CKEditor *** end
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

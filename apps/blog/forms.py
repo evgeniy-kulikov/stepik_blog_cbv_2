@@ -1,5 +1,6 @@
 from django import forms
 from .models import Post, Comment
+from ckeditor.widgets import CKEditorWidget
 
 
 class PostCreateForm(forms.ModelForm):
@@ -7,6 +8,9 @@ class PostCreateForm(forms.ModelForm):
     Форма добавления статей на сайте
     Не добавляем create, update, т.к они создаются автоматически.
     """
+
+    # Если мы хотим добавить этот редактор в виде виджета(не тип меняя поля в модели)
+    title = forms.CharField(widget=CKEditorWidget(config_name='awesome_ckeditor'))
 
     class Meta:
         model = Post
