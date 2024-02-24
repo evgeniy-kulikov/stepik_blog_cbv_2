@@ -8,3 +8,5 @@
 /apps/accounts/migrations/
 
 /media/
+/static/
+/cache/

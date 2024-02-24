@@ -66,6 +66,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     'debug_toolbar.middleware.DebugToolbarMiddleware',  # Middleware Django Debug Toolbar
+    'apps.accounts.middleware.ActiveUserMiddleware',  # Функционал статуса пользователей
 ]
 
 ROOT_URLCONF = "blog_cbv.urls"
@@ -168,3 +169,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 INTERNAL_IPS = [
     '127.0.0.1',  # для Django Debug Toolbar
 ]
+
+# Файловая система кэширования для Middleware
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': (BASE_DIR / 'cache'),
+    }
+}
