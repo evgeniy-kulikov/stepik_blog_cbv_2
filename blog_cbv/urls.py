@@ -18,9 +18,11 @@ from django.conf import settings  # тут будет и весь blog_cbv.setti
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-
 from apps.blog.feeds import LatestPostFeed
 
+handler403 = 'apps.blog.views.tr_handler403'  # Для страницы ошибки 403
+handler404 = 'apps.blog.views.tr_handler404'  # Для страницы ошибки 404
+handler500 = 'apps.blog.views.tr_handler500'  # Для страницы ошибки 500
 
 urlpatterns = [
     path("admin/", admin.site.urls),
