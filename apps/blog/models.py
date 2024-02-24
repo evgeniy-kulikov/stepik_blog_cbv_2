@@ -68,7 +68,7 @@ class Category(MPTTModel):
         """
         Получаем прямую ссылку на категорию
         """
-        return reverse('post_by_category', kwargs={'slug': self.slug})
+        return reverse('blog:post_by_category', kwargs={'slug': self.slug})
 
 
 class Post(models.Model):
@@ -130,7 +130,7 @@ class Post(models.Model):
         """
         Получаем прямую ссылку на статью
         """
-        return reverse('post_detail', kwargs={'slug': self.slug})
+        return reverse('blog:post_detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
         """

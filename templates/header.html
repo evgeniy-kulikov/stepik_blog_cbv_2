@@ -11,7 +11,7 @@
             {{ request.user }}
           </a>
           <ul class="dropdown-menu text-small" style="">
-            <li><a class="dropdown-item" href="{% url 'post_create' %}">Добавить статью</a></li>
+            <li><a class="dropdown-item" href="{% url 'blog:post_create' %}">Добавить статью</a></li>
             <li><a class="dropdown-item" href="{% url 'profile_detail' request.user.profile.slug %}">Мой профиль</a></li>
             <li><hr class="dropdown-divider"></li>
             <li>
